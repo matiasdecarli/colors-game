@@ -1,5 +1,6 @@
 body {
     background-color: lightblue;
+    text-align: center;
 }
 
 * {
@@ -26,4 +27,5 @@ body {
 
 #score{
 	background-color: white;
+  font-size: -webkit-xxx-large;
 }

@@ -1,11 +1,11 @@
 //customizables
-var circleWidth = (localStorage.getItem('circleWidth'))?localStorage.getItem('circleWidth'):75
-var circleHeight = (localStorage.getItem('circleHeight'))?localStorage.getItem('circleHeight'):75
-var intervalUp = (localStorage.getItem('intervalUp'))?localStorage.getItem('intervalUp'):3
-var intervalDown = (localStorage.getItem('intervalDown'))?localStorage.getItem('intervalDown'):3	
-var circleLowerStart = (localStorage.getItem('circleLowerStart'))?localStorage.getItem('circleLowerStart'):3
-var circleUpperStart = (localStorage.getItem('circleUpperStart'))?localStorage.getItem('circleUpperStart'):180
-var howMuchIsBlack = (localStorage.getItem('howMuchIsBlack'))?localStorage.getItem('howMuchIsBlack'):30
+var circleWidth = (localStorage.getItem('circleWidth'))?localStorage.getItem('circleWidth'):140;
+var circleHeight = (localStorage.getItem('circleHeight'))?localStorage.getItem('circleHeight'):140;
+var intervalUp = (localStorage.getItem('intervalUp'))?localStorage.getItem('intervalUp'):3;
+var intervalDown = (localStorage.getItem('intervalDown'))?localStorage.getItem('intervalDown'):3;
+var circleLowerStart = (localStorage.getItem('circleLowerStart'))?localStorage.getItem('circleLowerStart'):3;
+var circleUpperStart = (localStorage.getItem('circleUpperStart'))?localStorage.getItem('circleUpperStart'):180;
+var howMuchIsBlack = (localStorage.getItem('howMuchIsBlack'))?localStorage.getItem('howMuchIsBlack'):10;
 
 function createNewCircle(divName, ident) {
     var iDiv = document.createElement('div');
@@ -80,16 +80,20 @@ function changeColor(values){
 					newValue[i] = parseInt(parseInt(values[i]) + parseInt(intervalDown));
 				}; 
 				return newValue;
+		default: for (var i = 0; i < values.length; i++) {
+					newValue[i] = parseInt(parseInt(values[i]) - parseInt(intervalDown));
+				}; 
+				  return newValue;
 	}
 }
 
 function toggleCircle(elementId){	
-	document.getElementById(elementId).style.background = 'rgb(255,255,255)';	
+	document.getElementById(elementId).style.background = getRandomRGBValue(80,150);	
 	document.getElementById('score').style.background = 'white';
 }
 
 function isBlack(colors){	
-	if ((colors[0]<howMuchIsBlack) && (colors[1]<howMuchIsBlack) && (colors[2]<howMuchIsBlack)){
+	if ((colors[0]<=howMuchIsBlack) && (colors[1]<=howMuchIsBlack) && (colors[2]<=howMuchIsBlack)){
 		ammountOfBlack = ammountOfBlack + 1;
 		return true;
 	}
