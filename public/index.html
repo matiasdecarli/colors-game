@@ -31,7 +31,11 @@
 		handleMouseMove();
 	},50);
 
-	window.onclick = function(e) {		
+	var el = document.getElementById("container");
+  	el.addEventListener("touchstart", handleClick, false);
+  	el.addEventListener("click", handleClick, false);
+
+	function handleClick(e) {
 		if (e.target.getAttribute('class') === 'circle') toggleCircle(e.target.id);
 	};
 </script>
